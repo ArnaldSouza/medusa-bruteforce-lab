@@ -1,3 +1,129 @@
+# Medusa Bruteforce Lab
+
+| [English](#english-version) | [Português](#versão-em-português) |
+| :--- | :--- |
+
+
+<a name="english"></a>
+---
+## English Version
+...
+
+Medusa Bruteforce Lab
+
+Practical project demonstrating brute force attacks using Medusa against a vulnerable environment.
+
+⚠️ This lab is for educational purposes only and should be executed only in controlled environments.
+🎯 Objective
+
+To demonstrate different types of authentication attacks using the Medusa tool in a vulnerable environment. The lab simulates attacks against multiple services to show how weak credentials can compromise systems.
+
+The services tested in this lab were:
+
+    FTP (Brute force)
+
+    HTTP (DVWA web form)
+
+    SMB (SMB authentication)
+
+    SSH (Brute force)
+
+💻 Environment Setup
+
+    Attacker Machine: Kali Linux
+
+    Vulnerable Machine: Metasploitable 2
+
+    Target IP used: 192.168.56.102
+
+📂 Project Structure
+Plaintext
+
+MEDUSA-BRUTEFORCE-LAB
+│
+├── images
+│   ├── medusa_enum.png
+│   ├── medusa_ftp_success.png
+│   ├── medusa_http_success.png
+│   ├── medusa_smb_shares-list.png
+│   ├── medusa_smb.png
+│   └── medusa_ssh_success.png
+│
+├── scripts
+│   ├── medusa_ftp_attack.sh
+│   ├── medusa_http_attack.sh
+│   ├── medusa_smb_attack.sh
+│   └── medusa_ssh_attack.sh
+│
+├── wordlists
+│   ├── passwords.txt
+│   └── users.txt
+│
+└── README.md
+
+🔍 Initial Enumeration
+
+Before executing the brute force attacks, an SMB enumeration step was performed to identify possible existing users on the system.
+
+Command used:
+Bash
+
+enum4linux 192.168.56.102
+
+Enumeration Result:
+
+Identified User: msfadmin (This user was subsequently included in the users wordlist).
+🚀 Performed Attacks
+1. FTP Brute Force (Port 21)
+
+    Script: scripts/medusa_ftp_attack.sh
+
+    Result: Valid credentials found (msfadmin / msfadmin).
+
+2. Web Form Brute Force (DVWA)
+
+The attack uses the Medusa web-form module to automate logins on the DVWA application (/dvwa/login.php).
+
+    Script: scripts/medusa_http_attack.sh
+
+3. SMB Authentication (Port 445)
+
+Medusa performs authentication attempts against the SMB service and enumerates shares.
+
+    Script: scripts/medusa_smb_attack.sh
+
+4. SSH Brute Force (Port 22)
+
+Tests user and password combinations to obtain secure remote terminal access.
+
+    Script: scripts/medusa_ssh_attack.sh
+
+🛠️ Tool Used: Medusa
+
+Medusa is a parallel, modular, and extremely fast brute force tool that supports various protocols such as FTP, SSH, SMB, HTTP, Telnet, MySQL, VNC, and RDP.
+
+Its main advantage is efficiency when handling multiple simultaneous connections.
+🛡️ Mitigation Recommendations
+
+To prevent brute force attacks, the following is recommended:
+
+    Password Policies: Use strong, complex passwords and avoid defaults.
+
+    Active Protection: Implement Account Lockout policies and rate limiting.
+
+    Secure Authentication: Use Multi-Factor Authentication (MFA) and cryptographic keys for SSH.
+
+    Monitoring: Constantly analyze authentication logs to identify attack patterns.
+
+⚖️ Legal Disclaimer
+
+This project is for educational purposes only. All tests were conducted in a controlled environment. Never perform attacks against systems without explicit authorization.
+
+
+
+<a name="português"></a>
+## Versão em Português
+
 ---
 # Medusa Bruteforce Lab
 
